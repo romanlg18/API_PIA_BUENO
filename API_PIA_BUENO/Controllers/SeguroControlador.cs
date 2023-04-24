@@ -20,9 +20,16 @@ namespace API_PIA_BUENO.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetAllSeguros()
+        public async Task<IActionResult> GetAllClient()
         {
-            return Ok(await _SeguroRepository.GetAllSeguros());
+            return Ok(await _SeguroRepository.GetAllClient());
+        }
+
+        [HttpGet]
+        [Route("seguros")]
+        public async Task<IActionResult> GetSeguros()
+        {
+            return Ok(await _SeguroRepository.GetSeguros());
         }
     }
 

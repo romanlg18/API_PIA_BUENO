@@ -24,11 +24,11 @@ namespace API_PROG.data.Repositorios
             return new MySqlConnection(_connectionString.ConnectionString);
         }
 
-        public async Task<IEnumerable<GetSeguros>> GetAllSeguros()
+        public async Task<IEnumerable<GetCliente>> GetAllClient()
         {
             var db = dbConnection();
             var sql = @"CALL SELECT_MULTIPLE_ENSURANCE";
-            return await db.QueryAsync<GetSeguros>(sql, new { });
+            return await db.QueryAsync<GetCliente>(sql, new { });
         }
 
         public async Task<IEnumerable<Seguros>> GetSegurosDetails(int idSeguros)
@@ -60,6 +60,13 @@ namespace API_PROG.data.Repositorios
             var db = dbConnection();
             var sql = @"CALL AgregarSeguro(@NombreSeguro)";
             return await db.QueryAsync<Seguros>(sql, new { seguros.NombreSeguro });
+        }
+
+        public async Task<IEnumerable<GetSeguros>> GetSeguros()
+        {
+            var db = dbConnection();
+            var sql = @"CALL SELECT_SEGUROS";
+            return await db.QueryAsync<GetSeguros>(sql, new {});
         }
     }
 }

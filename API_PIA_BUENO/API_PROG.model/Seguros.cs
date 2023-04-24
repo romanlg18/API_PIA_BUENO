@@ -13,7 +13,7 @@
         public string NombreSeguro { get; set; }
     }
 
-    public class GetSeguros
+    public class GetCliente
     {
         public string Nombre_Completo { get; set; }
         public string SEGUROS_TYPE { get; set; }
@@ -22,4 +22,14 @@
         public string CL_CORREO { get; set; }
         public Int64 CL_NUMERO { get; set; }
     }
+
+    public class GetSeguros
+    {
+        public int idSeguros { get; set; }
+        public string SEGUROS_TYPE { get; set; }
+        public string SEGURO_DESC { get; set; }
+
+        public int ESTATUS { get; set; }
+    }
+
 }
