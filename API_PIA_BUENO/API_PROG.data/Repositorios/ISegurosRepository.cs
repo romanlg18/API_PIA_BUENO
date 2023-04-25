@@ -10,10 +10,18 @@ namespace API_PROG.data.Repositorios
     public interface ISegurosRepository
     {
         Task<IEnumerable<GetCliente>> GetAllClient();
-        Task<IEnumerable<Seguros>> GetSegurosDetails(int idSeguros);
-        Task<IEnumerable<Seguros>> InsertSeguros(SegurosInsertar seguros);
-        Task<bool> UpdateSeguros(int idSeguros, Seguros seguros);
-        Task<bool> BorrarSeguros(int idSeguros);
+
+        Task<IEnumerable<GetSegurosID>> GetSegurosID(int idSeguros);
+
+        Task<bool> InsertSeguros(SegurosInsertar seguros);
+
+
+        Task<bool> UpdateSeguros(int idSeguros, UpdateSeguros seguros);
+
+
+        Task<bool> BorrarSeguros(int idSeguros, DeleteSeguros seguros);
+
+
         Task<IEnumerable<GetSeguros>> GetSeguros();
 
     }

@@ -31,42 +31,47 @@ namespace API_PROG.data.Repositorios
             return await db.QueryAsync<GetCliente>(sql, new { });
         }
 
-        public async Task<IEnumerable<Seguros>> GetSegurosDetails(int idSeguros)
+        public async Task<IEnumerable<GetSegurosID>> GetSegurosID(int idSeguros)
         {
             var db = dbConnection();
 
-            var sql = @"CALL DetalleSeguros(@idSegurosP)";
-            return await db.QueryAsync<Seguros>(sql, new { idSegurosP = idSeguros });
-        }
-        public async Task<bool> UpdateSeguros(int idSeguros, Seguros seguros)
-        {
-            var db = dbConnection();
-            var sql = @"CALL UPDATE_INSURANCE(@idSegurosP, @SegurosP,@SegurosDesP, @EstautsP)";
-            var result = await db.ExecuteAsync(sql, new { idSegurosP = idSeguros, SegurosP = seguros.TipoSeguros, SeguroDesP = seguros.SegurosDesc, status_p = seguros.status });
-            return result > 0;
-        }
-        public async Task<bool> BorrarSeguros(int idSeguros)
-        {
-            var db = dbConnection();
-
-            var sql = @"CALL DELETE_INSURANCE(@idSegurosP)";
-            var result = await db.ExecuteAsync(sql, new { idSeguros = idSeguros });
-
-            return result > 0;
-        }
-
-        public async Task<IEnumerable<Seguros>> InsertSeguros(SegurosInsertar seguros)
-        {
-            var db = dbConnection();
-            var sql = @"CALL AgregarSeguro(@NombreSeguro)";
-            return await db.QueryAsync<Seguros>(sql, new { seguros.NombreSeguro });
+            var sql = @"CALL SelectDetailsSeguros(@idSegurosP)";
+            return await db.QueryAsync<GetSegurosID>(sql, new { idSegurosP = idSeguros });
         }
 
         public async Task<IEnumerable<GetSeguros>> GetSeguros()
         {
             var db = dbConnection();
             var sql = @"CALL SELECT_SEGUROS";
-            return await db.QueryAsync<GetSeguros>(sql, new {});
+            return await db.QueryAsync<GetSeguros>(sql, new { });
+        }
+
+        public async Task<bool> UpdateSeguros(int idSeguros, UpdateSeguros seguros)
+        {
+            var db = dbConnection();
+            var sql = @"CALL UPDATE_INSURANCE(@idSegurosP, @SegurosP ,@SegurosDesP, @EstautsP)";
+            var result = await db.ExecuteAsync(sql, new { idSegurosP = idSeguros, SegurosP = seguros.SEGUROS_TYPE, SegurosDesP = seguros.SEGURO_DESC, EstautsP = seguros.ESTATUS });
+            return result > 0; 
+        }
+
+
+
+        public async Task<bool> InsertSeguros(SegurosInsertar seguros)
+        {
+            var db = dbConnection();
+            var sql = @"CALL AgregarSeguro(@SegurosP, @SegurosDesP, @EstautsP)";
+            var result = await db.ExecuteAsync(sql, new { SegurosP = seguros.SEGUROS_TYPE, SegurosDesP = seguros.SEGURO_DESC, EstautsP = seguros.ESTATUS });
+            return result > 0;
+        }
+
+        public async Task<bool> BorrarSeguros(int idSeguros, DeleteSeguros seguros)
+        {
+            var db = dbConnection();
+
+            var sql = @"CALL DELETE_INSURANCE(@idSegurosP)";
+            var result = await db.ExecuteAsync(sql, new { idSegurosP = idSeguros });
+
+            return result > 0;
         }
     }
 }

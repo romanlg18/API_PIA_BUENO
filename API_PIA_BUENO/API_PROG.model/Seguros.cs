@@ -10,7 +10,10 @@
 
     public class SegurosInsertar
     {
-        public string NombreSeguro { get; set; }
+        public string SEGUROS_TYPE { get; set; }
+        public string SEGURO_DESC { get; set; }
+
+        public int ESTATUS { get; set; }
     }
 
     public class GetCliente
@@ -23,6 +26,14 @@
         public Int64 CL_NUMERO { get; set; }
     }
 
+    public class GetSegurosID
+    {
+        public string SEGUROS_TYPE { get; set; }
+        public string SEGURO_DESC { get; set; }
+
+        public int ESTATUS { get; set; }
+    }
+
     public class GetSeguros
     {
         public int idSeguros { get; set; }
@@ -30,6 +41,21 @@
         public string SEGURO_DESC { get; set; }
 
         public int ESTATUS { get; set; }
+    }
+
+    public class UpdateSeguros
+    {
+        public int idSeguros { get; set; }
+        public string SEGUROS_TYPE { get; set; }
+        public string SEGURO_DESC { get; set; }
+
+        public int ESTATUS { get; set; }
+    }
+
+
+    public class DeleteSeguros
+    {
+        public int idSeguros { get; set; }
     }
 
 }
