@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2023 a las 23:43:00
+-- Tiempo de generación: 25-04-2023 a las 23:43:31
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -111,6 +111,28 @@ INSERT INTO `args_clientes` (`IdCliente`, `CL_NOMBRES`, `CL_APELLIDOS`, `CL_Nume
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `args_prospectos`
+--
+
+CREATE TABLE `args_prospectos` (
+  `idProspecto` int(40) NOT NULL,
+  `Nombres(s)` varchar(100) NOT NULL,
+  `Apellidos(s)` varchar(100) NOT NULL,
+  `Telefono` bigint(50) NOT NULL,
+  `Correo` varchar(60) NOT NULL,
+  `SegurosTipo` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `args_prospectos`
+--
+
+INSERT INTO `args_prospectos` (`idProspecto`, `Nombres(s)`, `Apellidos(s)`, `Telefono`, `Correo`, `SegurosTipo`) VALUES
+(1, 'Román', 'Leyva Garza', 8120741152, 'romanleyva269@gmail.com', 'Seguro de Retiro');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `args_seguros`
 --
 
@@ -142,6 +164,12 @@ ALTER TABLE `args_clientes`
   ADD KEY `IDSEGUROS_idx` (`IDSEGUROS`);
 
 --
+-- Indices de la tabla `args_prospectos`
+--
+ALTER TABLE `args_prospectos`
+  ADD PRIMARY KEY (`idProspecto`);
+
+--
 -- Indices de la tabla `args_seguros`
 --
 ALTER TABLE `args_seguros`
@@ -156,6 +184,12 @@ ALTER TABLE `args_seguros`
 --
 ALTER TABLE `args_clientes`
   MODIFY `IdCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `args_prospectos`
+--
+ALTER TABLE `args_prospectos`
+  MODIFY `idProspecto` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `args_seguros`
