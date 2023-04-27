@@ -49,8 +49,8 @@ namespace API_PROG.data.Repositorios
         public async Task<bool> UpdateSeguros(int idSeguros, UpdateSeguros seguros)
         {
             var db = dbConnection();
-            var sql = @"CALL UPDATE_INSURANCE(@idSegurosP, @SegurosP ,@SegurosDesP, @EstautsP)";
-            var result = await db.ExecuteAsync(sql, new { idSegurosP = idSeguros, SegurosP = seguros.SEGUROS_TYPE, SegurosDesP = seguros.SEGURO_DESC, EstautsP = seguros.ESTATUS });
+            var sql = @"CALL UPDATE_INSURANCE(@idSegurosP, @SegurosP,@SegurosPT ,@SegurosDesP, @EstautsP)";
+            var result = await db.ExecuteAsync(sql, new { idSegurosP = idSeguros, SegurosP = seguros.SEGUROS_TYPE, SegurosPT = seguros.Seguro, SegurosDesP = seguros.SEGURO_DESC, EstautsP = seguros.ESTATUS});
             return result > 0; 
         }
 
@@ -59,8 +59,8 @@ namespace API_PROG.data.Repositorios
         public async Task<bool> InsertSeguros(SegurosInsertar seguros)
         {
             var db = dbConnection();
-            var sql = @"CALL AgregarSeguro(@SegurosP, @SegurosDesP, @EstautsP)";
-            var result = await db.ExecuteAsync(sql, new { SegurosP = seguros.SEGUROS_TYPE, SegurosDesP = seguros.SEGURO_DESC, EstautsP = seguros.ESTATUS });
+            var sql = @"CALL AgregarSeguro(@SegurosP,@SegurosPT, @SegurosDesP)";
+            var result = await db.ExecuteAsync(sql, new { SegurosP = seguros.SEGUROS_TYPE, SegurosPT = seguros.Seguro, SegurosDesP = seguros.SEGURO_DESC });
             return result > 0;
         }
 

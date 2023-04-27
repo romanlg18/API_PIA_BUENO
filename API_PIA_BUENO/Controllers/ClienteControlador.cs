@@ -37,6 +37,20 @@ namespace API_PIA_BUENO.Controllers
             await _ClienteRepository.BajaClientes(idCliente, clientes);
             return Ok();
         }
+
+
+        [HttpPost]
+        [Route("InsertClientes")]
+        public async Task<IActionResult> InsertClientes(ClientesInsertar clientes)
+        {
+            if (clientes == null)
+                return BadRequest();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var created = await _ClienteRepository.InsertClientes(clientes);
+            return Created("created", created);
+        }
     }
 
 

@@ -41,7 +41,10 @@ namespace API_PROG.data.Repositorios
 
         public async Task<bool> InsertClientes(ClientesInsertar clientes)
         {
-            throw new NotImplementedException();
+            var db = dbConnection();
+            var sql = @"CALL AgregarCliente(@NombresP, @ApellidosP, @NumeroP, @CorreoP, @IdSegurosP, @SeguroP, @FECHAP )";
+            var result = await db.ExecuteAsync(sql, new { NombresP = clientes.CL_NOMBRES, ApellidosP = clientes.CL_aPELLIDOS, NumeroP = clientes.CL_NUMERO, CorreoP = clientes.CL_CORREO, IdSegurosP = clientes.IDSEGUROS, SeguroP = clientes.SEGURO_INT, FECHAP = clientes.FECHA_ALTA });
+            return result > 0;
         }
 
         public Task<bool> UpdateCliente(int idCliente, UpdateClient clientes)

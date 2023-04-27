@@ -4,6 +4,9 @@
     {
         public int idSeguros { get; set; }
         public string TipoSeguros { get; set; }
+
+        public string Seguro { get; set; }
+
         public string SegurosDesc { get; set;}  
         public int status { get; set; } 
     }
@@ -11,15 +14,16 @@
     public class SegurosInsertar
     {
         public string SEGUROS_TYPE { get; set; }
+        public string Seguro { get; set; }
         public string SEGURO_DESC { get; set; }
-
-        public int ESTATUS { get; set; }
     }
 
     public class GetCliente
     {
         public string Nombre_Completo { get; set; }
         public string SEGUROS_TYPE { get; set; }
+
+        public string Seguro { get; set; }
         public string SEGURO_DESC { get; set; }
 
         public string CL_CORREO { get; set; }
@@ -29,6 +33,7 @@
     public class GetSegurosID
     {
         public string SEGUROS_TYPE { get; set; }
+        public string Seguro { get; set; }
         public string SEGURO_DESC { get; set; }
 
         public int ESTATUS { get; set; }
@@ -38,6 +43,7 @@
     {
         public int idSeguros { get; set; }
         public string SEGUROS_TYPE { get; set; }
+        public string Seguro { get; set; }
         public string SEGURO_DESC { get; set; }
 
         public int ESTATUS { get; set; }
@@ -47,6 +53,7 @@
     {
         public int idSeguros { get; set; }
         public string SEGUROS_TYPE { get; set; }
+        public string Seguro { get; set; }
         public string SEGURO_DESC { get; set; }
 
         public int ESTATUS { get; set; }
