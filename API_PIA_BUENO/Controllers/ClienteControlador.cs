@@ -28,13 +28,13 @@ namespace API_PIA_BUENO.Controllers
 
         [HttpPut]
         [Route("DelUpdateCliente")]
-        public async Task<IActionResult> BajaClientes(int idCliente, UpDeleteClient clientes)
+        public async Task<IActionResult> BajaClientes(UpDeleteClient clientes)
         {
             if (clientes == null)
                 return BadRequest();
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            await _ClienteRepository.BajaClientes(idCliente, clientes);
+            await _ClienteRepository.BajaClientes(clientes);
             return Ok();
         }
 

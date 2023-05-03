@@ -31,25 +31,20 @@ namespace API_PROG.data.Repositorios
             return await db.QueryAsync<GetClienteCL>(sql, new { });
         }
 
-        public async Task<bool> BajaClientes(int idCliente, UpDeleteClient clientes)
-        {
-            var db = dbConnection();
-            var sql = @"CALL delete_update_client(@idClienteP, @EstatusCLP)";
-            var result = await db.ExecuteAsync(sql, new { idClienteP = idCliente, EstatusCLP = clientes.EstatusCL });
-            return result > 0;
-        }
-
         public async Task<bool> InsertClientes(ClientesInsertar clientes)
         {
             var db = dbConnection();
-            var sql = @"CALL AgregarCliente(@NombresP, @ApellidosP, @NumeroP, @CorreoP, @IdSegurosP, @SeguroP, @FECHAP )";
-            var result = await db.ExecuteAsync(sql, new { NombresP = clientes.CL_NOMBRES, ApellidosP = clientes.CL_aPELLIDOS, NumeroP = clientes.CL_NUMERO, CorreoP = clientes.CL_CORREO, IdSegurosP = clientes.IDSEGUROS, SeguroP = clientes.SEGURO_INT, FECHAP = clientes.FECHA_ALTA });
+            var sql = @"CALL AgregarCliente(@NombresP, @ApellidosP, @NumeroP, @CorreoP, @IdSegurosP, @FECHAP )";
+            var result = await db.ExecuteAsync(sql, new { NombresP = clientes.CL_NOMBRES, ApellidosP = clientes.CL_aPELLIDOS, NumeroP = clientes.CL_NUMERO, CorreoP = clientes.CL_CORREO, IdSegurosP = clientes.IDSEGUROS, FECHAP = clientes.FECHA_ALTA });
             return result > 0;
         }
 
-        public Task<bool> UpdateCliente(int idCliente, UpdateClient clientes)
+        public async Task<bool> BajaClientes(UpDeleteClient clientes)
         {
-            throw new NotImplementedException();
+            var db = dbConnection();
+            var sql = @"CALL delete_update_client(@idClienteP, @EstatusCLP)";
+            var result = await db.ExecuteAsync(sql, new { idClienteP = clientes.idCliente, EstatusCLP = clientes.EstatusCL });
+            return result > 0;
         }
     }
 }

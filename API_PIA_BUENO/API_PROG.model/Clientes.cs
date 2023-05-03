@@ -1,4 +1,6 @@
-﻿namespace API_PROG.model
+﻿using Microsoft.VisualBasic;
+
+namespace API_PROG.model
 {
     public class GetClienteCL
     {
@@ -8,10 +10,9 @@
 
         public string CL_CORREO { get; set; }
         public Int64 CL_NUMERO { get; set; }
-        public int IDSEGUROS { get; set; }
-        public string SEGURO_INT { get; set; }
+        public string SEGURO { get; set; }
 
-        public int EstatusCL { get; set; }
+        public string Estatus { get; set; }
 
         public string FECHA_ALTA { get; set; } 
     }
@@ -23,17 +24,10 @@
         public string CL_CORREO { get; set; }
         public Int64 CL_NUMERO { get; set; }
         public int IDSEGUROS { get; set; }
-        public string SEGURO_INT { get; set; }
-        public DateTime FECHA_ALTA { get; set; }
+        public string FECHA_ALTA { get; set; }
     }
 
     public class UpDeleteClient
-    {
-        public int idCliente { get; set; }
-        public int EstatusCL { get; set; }
-    }
-
-    public class UpdateClient
     {
         public int idCliente { get; set; }
         public int EstatusCL { get; set; }
