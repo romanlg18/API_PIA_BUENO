@@ -17,6 +17,14 @@ namespace API_PROG.model
         public string FECHA_ALTA { get; set; } 
     }
 
+
+    public class GetCredenciales
+    {
+        public string Usuario { get; set; }
+        public string Password { get; set; }
+
+    }
+
     public class ClientesInsertar
     {
         public string CL_NOMBRES { get; set; }

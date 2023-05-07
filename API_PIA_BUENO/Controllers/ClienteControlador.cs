@@ -20,11 +20,19 @@ namespace API_PIA_BUENO.Controllers
 
 
         [HttpGet]
+        [Route("ObtenerClientes")]
+
         public async Task<IActionResult> GetAllClient()
         {
             return Ok(await _ClienteRepository.GetAllClient());
         }
 
+        [HttpGet]
+        [Route("ObtenerCredenciales")]
+        public async Task<IActionResult> GetCredentials()
+        {
+            return Ok(await _ClienteRepository.GetCredentials());
+        }
 
         [HttpPut]
         [Route("DelUpdateCliente")]

@@ -46,5 +46,12 @@ namespace API_PROG.data.Repositorios
             var result = await db.ExecuteAsync(sql, new { idClienteP = clientes.idCliente, EstatusCLP = clientes.EstatusCL });
             return result > 0;
         }
+
+        public async Task<IEnumerable<GetCredenciales>> GetCredentials()
+        {
+            var db = dbConnection();
+            var sql = @"CALL LOGIN";
+            return await db.QueryAsync<GetCredenciales>(sql, new { });
+        }
     }
 }
