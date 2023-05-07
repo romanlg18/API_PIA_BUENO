@@ -17,6 +17,8 @@ namespace API_PROG.data.Repositorios
 
         Task<bool> BajaClientes(UpDeleteClient clientes);
 
+        Task<bool> InsertarContacto(ContactoInsertar clientes);
+
 
     }
 }

@@ -53,5 +53,13 @@ namespace API_PROG.data.Repositorios
             var sql = @"CALL LOGIN";
             return await db.QueryAsync<GetCredenciales>(sql, new { });
         }
+
+        public async Task<bool> InsertarContacto(ContactoInsertar clientes)
+        {
+            var db = dbConnection();
+            var sql = @"CALL AddSituation(@NombreP, @CorreoP, @AsuntoP,  @MensajeP)";
+            var result = await db.ExecuteAsync(sql, new { NombreP = clientes.Nombre, CorreoP = clientes.Correo, AsuntoP = clientes.Asunto, MensajeP = clientes.Mensaje});
+            return result > 0;
+        }
     }
 }
