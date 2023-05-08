@@ -61,5 +61,12 @@ namespace API_PROG.data.Repositorios
             var result = await db.ExecuteAsync(sql, new { NombreP = clientes.Nombre, CorreoP = clientes.Correo, AsuntoP = clientes.Asunto, MensajeP = clientes.Mensaje});
             return result > 0;
         }
+
+        public async Task<IEnumerable<GetBuzon>> GetDudas()
+        {
+            var db = dbConnection();
+            var sql = @"CALL BuzonDudas";
+            return await db.QueryAsync<GetBuzon>(sql, new { });
+        }
     }
 }

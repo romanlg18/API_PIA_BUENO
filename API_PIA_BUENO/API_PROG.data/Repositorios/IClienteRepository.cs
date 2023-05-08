@@ -12,6 +12,7 @@ namespace API_PROG.data.Repositorios
         Task<IEnumerable<GetClienteCL>> GetAllClient();
 
         Task<IEnumerable<GetCredenciales>> GetCredentials();
+        Task<IEnumerable<GetBuzon>> GetDudas();
 
         Task<bool> InsertClientes(ClientesInsertar clientes);
 

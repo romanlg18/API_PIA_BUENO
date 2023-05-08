@@ -50,4 +50,12 @@ namespace API_PROG.model
         public string Mensaje { get; set; }
     }
 
+    public class GetBuzon
+    {
+        public string Nombre { get; set; }
+        public string Correo { get; set; }
+        public string Asunto { get; set; }
+        public string Mensaje { get; set; }
+    }
+
 }

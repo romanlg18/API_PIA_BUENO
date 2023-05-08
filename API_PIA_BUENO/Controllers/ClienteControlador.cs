@@ -34,6 +34,13 @@ namespace API_PIA_BUENO.Controllers
             return Ok(await _ClienteRepository.GetCredentials());
         }
 
+        [HttpGet]
+        [Route("ObtenerBuzon")]
+        public async Task<IActionResult> GetDudas()
+        {
+            return Ok(await _ClienteRepository.GetDudas());
+        }
+
         [HttpPut]
         [Route("DelUpdateCliente")]
         public async Task<IActionResult> BajaClientes(UpDeleteClient clientes)
