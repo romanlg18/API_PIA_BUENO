@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2023 a las 05:07:42
+-- Tiempo de generación: 08-05-2023 a las 07:27:31
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -129,8 +129,51 @@ CREATE TABLE `args_clientes` (
 --
 
 INSERT INTO `args_clientes` (`IdCliente`, `CL_NOMBRES`, `CL_APELLIDOS`, `CL_Numero`, `CL_Correo`, `IDSEGUROS`, `SEGURO_INT`, `ESTATUSCL`, `FECHA_ALTA`) VALUES
-(1, 'Roman', 'Leyva Garza', 8120741152, 'romanleyva269@gmail.com', 1, NULL, 1, '2000-03-18'),
-(2, 'Daniela Alejandra', 'Vieyra Caballero', 8120741153, 'danielaVieyra@gmail.com', 5, NULL, 1, '2002-11-14');
+(1, 'Roman', 'Leyva Garza', 8120741152, 'romanleyva269@gmail.com', 1, NULL, 0, '2000-03-18'),
+(2, 'Daniela Alejandra', 'Vieyra Caballero', 8120741153, 'danielaVieyra@gmail.com', 5, NULL, 1, '2002-11-14'),
+(3, 'Roman', 'Leyva Garza', 8120741152, 'romanleyva269@gmail.com', 2, NULL, 1, '2000-03-18');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `args_contactos`
+--
+
+CREATE TABLE `args_contactos` (
+  `IdContacto` int(11) NOT NULL,
+  `Nombre` varchar(70) NOT NULL,
+  `Correo` varchar(100) NOT NULL,
+  `Asunto` varchar(45) NOT NULL,
+  `Mensaje` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `args_contactos`
+--
+
+INSERT INTO `args_contactos` (`IdContacto`, `Nombre`, `Correo`, `Asunto`, `Mensaje`) VALUES
+(1, 'Roman Leyva Garza', 'romanleyva269@gmail.com', 'Fondo de ahorro', '¡Necesito ayuda!'),
+(2, 'Daniela Alejandra', 'daniela@gmail.com', 'Fondo de ahorro', '¡Necesito ayuda!'),
+(3, 'Roman Leyva Garza', 'romanleyva269@gmail.com', 'Fondo de ahorro', 'Ayuda! ');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `args_credenciales`
+--
+
+CREATE TABLE `args_credenciales` (
+  `IDUser` int(11) NOT NULL,
+  `Usuario` varchar(45) NOT NULL,
+  `Password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `args_credenciales`
+--
+
+INSERT INTO `args_credenciales` (`IDUser`, `Usuario`, `Password`) VALUES
+(1, 'admin', 'tKRHO3p8%07dlDSf#B^k');
 
 -- --------------------------------------------------------
 
@@ -172,6 +215,18 @@ ALTER TABLE `args_clientes`
   ADD KEY `IDSEGUROS_idx` (`IDSEGUROS`);
 
 --
+-- Indices de la tabla `args_contactos`
+--
+ALTER TABLE `args_contactos`
+  ADD PRIMARY KEY (`IdContacto`);
+
+--
+-- Indices de la tabla `args_credenciales`
+--
+ALTER TABLE `args_credenciales`
+  ADD PRIMARY KEY (`IDUser`);
+
+--
 -- Indices de la tabla `args_seguros`
 --
 ALTER TABLE `args_seguros`
@@ -185,7 +240,13 @@ ALTER TABLE `args_seguros`
 -- AUTO_INCREMENT de la tabla `args_clientes`
 --
 ALTER TABLE `args_clientes`
-  MODIFY `IdCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IdCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `args_contactos`
+--
+ALTER TABLE `args_contactos`
+  MODIFY `IdContacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `args_seguros`
