@@ -5,10 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using API_PROG.data.Repositorios;
 using API_PROG.model;
-//PRUEBA 1
+using Microsoft.AspNetCore.Authorization;
+
+
 namespace API_PIA_BUENO.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize] //tKRHO3p8%07dlDSf#B^k
     [ApiController]
     public class ClienteControlador : ControllerBase
     {
@@ -21,6 +24,7 @@ namespace API_PIA_BUENO.Controllers
 
         [HttpGet]
         [Route("ObtenerClientes")]
+        [Authorize]
 
         public async Task<IActionResult> GetAllClient()
         {
