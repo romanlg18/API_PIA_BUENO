@@ -1,4 +1,5 @@
-﻿using API_PROG.model;
+﻿using API_PIA_BUENO.API_PROG.model;
+using API_PROG.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,9 @@ namespace API_PROG.data.Repositorios
         Task<IEnumerable<GetBuzon>> GetDudas();
 
         Task<bool> InsertClientes(ClientesInsertar clientes);
-
         Task<bool> BajaClientes(UpDeleteClient clientes);
 
-        Task<bool> InsertarContacto(ContactoInsertar clientes);
-
+        Task<bool> UpdateClienteAdmin(UpdateClienteAdmin clientes);
 
     }
 }

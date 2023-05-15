@@ -42,12 +42,13 @@ namespace API_PROG.model
     }
 
 
-    public class ContactoInsertar
+    public class UpdateClienteAdmin
     {
-        public string Nombre { get; set; }
-        public string Correo { get; set; }
-        public string Asunto { get; set; }
-        public string Mensaje { get; set; }
+        public int idCliente { get; set; }
+        public string CL_NOMBRES { get; set; }
+        public string CL_aPELLIDOS { get; set; }
+        public string CL_CORREO { get; set; }
+        public Int64 CL_NUMERO { get; set; }
     }
 
     public class GetBuzon
@@ -57,5 +58,7 @@ namespace API_PROG.model
         public string Asunto { get; set; }
         public string Mensaje { get; set; }
     }
+
+
 
 }

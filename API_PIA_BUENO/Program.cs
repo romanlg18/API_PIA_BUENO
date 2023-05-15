@@ -3,6 +3,7 @@ using API_PROG.data.Repositorios;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using API_PIA_BUENO.API_PROG.data.Repositorios;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
@@ -49,6 +50,7 @@ var mySQLConfig = new MySqlConfiguration(builder.Configuration.GetConnectionStri
 builder.Services.AddSingleton(mySQLConfig);
 builder.Services.AddScoped<ISegurosRepository, SegurosRepository>();
 builder.Services.AddScoped<IClienteRepository, ClientesRepository>();
+builder.Services.AddScoped<IPaginaRepository, PaginaRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -62,6 +64,7 @@ app.UseHttpsRedirection();
 
 app.UseCors(MyAllowSpecificOrigins);
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

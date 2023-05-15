@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using API_PIA_BUENO.API_PROG.model;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 namespace API_PROG.data.Repositorios
 {
@@ -54,19 +55,19 @@ namespace API_PROG.data.Repositorios
             return await db.QueryAsync<GetCredenciales>(sql, new { });
         }
 
-        public async Task<bool> InsertarContacto(ContactoInsertar clientes)
-        {
-            var db = dbConnection();
-            var sql = @"CALL AddSituation(@NombreP, @CorreoP, @AsuntoP,  @MensajeP)";
-            var result = await db.ExecuteAsync(sql, new { NombreP = clientes.Nombre, CorreoP = clientes.Correo, AsuntoP = clientes.Asunto, MensajeP = clientes.Mensaje});
-            return result > 0;
-        }
-
         public async Task<IEnumerable<GetBuzon>> GetDudas()
         {
             var db = dbConnection();
             var sql = @"CALL BuzonDudas";
             return await db.QueryAsync<GetBuzon>(sql, new { });
+        }
+
+        public async Task<bool> UpdateClienteAdmin(UpdateClienteAdmin clientes)
+        {
+            var db = dbConnection();
+            var sql = @"CALL ActualizarCliente(@IdClienteP, @NombreP, @ApellidoP, @NumeroP, @CorreoP )";
+            var result = await db.ExecuteAsync(sql, new { IdClienteP = clientes.idCliente, NombreP = clientes.CL_NOMBRES, ApellidoP = clientes.CL_aPELLIDOS, NumeroP = clientes.CL_NUMERO, CorreoP = clientes.CL_CORREO });
+            return result > 0;
         }
     }
 }

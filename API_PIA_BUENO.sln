@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_PIA_BUENO", "API_PIA_BUENO\API_PIA_BUENO.csproj", "{A924B537-5D99-4ADB-B5D3-EB57709BC7FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_PIA_BUENO", "API_PIA_BUENO\API_PIA_BUENO.csproj", "{A924B537-5D99-4ADB-B5D3-EB57709BC7FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace API_PIA_BUENO.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize] //tKRHO3p8%07dlDSf#B^k
+    [Authorize] 
     [ApiController]
     public class ClienteControlador : ControllerBase
     {
@@ -72,16 +72,16 @@ namespace API_PIA_BUENO.Controllers
         }
 
 
-        [HttpPost]
-        [Route("ContactoInsertar")]
-        public async Task<IActionResult> InsertarContacto(ContactoInsertar clientes)
+        [HttpPut]
+        [Route("UpdateDatos")]
+        public async Task<IActionResult> UpdateClienteAdmin(UpdateClienteAdmin clientes)
         {
             if (clientes == null)
                 return BadRequest();
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var created = await _ClienteRepository.InsertarContacto(clientes);
+            var created = await _ClienteRepository.UpdateClienteAdmin(clientes);
             return Created("created", created);
         }
     }
