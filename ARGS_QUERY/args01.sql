@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2023 a las 07:27:31
+-- Tiempo de generación: 15-05-2023 a las 03:47:13
 -- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -25,6 +25,15 @@ DELIMITER $$
 --
 -- Procedimientos
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarCliente` (IN `IdClienteP` INT, IN `NombreP` VARCHAR(45), IN `ApellidoP` VARCHAR(45), IN `NumeroP` BIGINT, IN `CorreoP` VARCHAR(50))   BEGIN
+	UPDATE ARGS_CLIENTES
+    SET CL_NOMBRES = NombreP
+    , CL_APELLIDOS = ApellidoP
+    , CL_Numero = NumeroP
+    , CL_Correo = CorreoP
+    WHERE IdCliente = IdClienteP;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ADDINSURANCE` (IN `SegurosP` VARCHAR(10000), IN `SegurosPINT` VARCHAR(10000), IN `SegurosDesP` VARCHAR(10000), IN `EstautsP` INT(1))   BEGIN
 	INSERT INTO args01.ARGS_SEGUROS( SEGUROS_TYPE,SEGURO, SEGUROS_DESC, ESTATUS) VALUES ( SegurosP, SegurosPINT,SegurosDesP, EstautsP);
 END$$
@@ -130,8 +139,11 @@ CREATE TABLE `args_clientes` (
 
 INSERT INTO `args_clientes` (`IdCliente`, `CL_NOMBRES`, `CL_APELLIDOS`, `CL_Numero`, `CL_Correo`, `IDSEGUROS`, `SEGURO_INT`, `ESTATUSCL`, `FECHA_ALTA`) VALUES
 (1, 'Roman', 'Leyva Garza', 8120741152, 'romanleyva269@gmail.com', 1, NULL, 0, '2000-03-18'),
-(2, 'Daniela Alejandra', 'Vieyra Caballero', 8120741153, 'danielaVieyra@gmail.com', 5, NULL, 1, '2002-11-14'),
-(3, 'Roman', 'Leyva Garza', 8120741152, 'romanleyva269@gmail.com', 2, NULL, 1, '2000-03-18');
+(2, 'Karen', 'Padron', 83478347843, 'karen@gmail.com', 5, NULL, 1, '2002-11-14'),
+(3, 'Roman', 'Leyva Garza', 8120741152, 'romanleyva269@gmail.com', 2, NULL, 0, '2000-03-18'),
+(5, 'Roman', 'Leyva', 8120741152, 'rlg00@gmail.com', 2, NULL, 1, '2023-01-01'),
+(6, 'Roman', 'Leyva', 8120741152, 'rlg00@gmail.com', 7, NULL, 1, '2023-01-01'),
+(7, 'Damina', 'Leyva', 819383943, 'rlg00@gmail.com', 7, NULL, 1, '2022-07-13');
 
 -- --------------------------------------------------------
 
@@ -154,7 +166,12 @@ CREATE TABLE `args_contactos` (
 INSERT INTO `args_contactos` (`IdContacto`, `Nombre`, `Correo`, `Asunto`, `Mensaje`) VALUES
 (1, 'Roman Leyva Garza', 'romanleyva269@gmail.com', 'Fondo de ahorro', '¡Necesito ayuda!'),
 (2, 'Daniela Alejandra', 'daniela@gmail.com', 'Fondo de ahorro', '¡Necesito ayuda!'),
-(3, 'Roman Leyva Garza', 'romanleyva269@gmail.com', 'Fondo de ahorro', 'Ayuda! ');
+(3, 'Roman Leyva Garza', 'romanleyva269@gmail.com', 'Fondo de ahorro', 'Ayuda! '),
+(4, 'Roman', 'rlg00@gmail.com', 'Hola', 'pagina'),
+(5, 'Roman', 'rlg00@gmail.com', 'roman', 'ayuda'),
+(6, 'string', 'string', 'string', 'string'),
+(7, 'roman', 'rlg00@gmail.com', 'aisijs', 'sdjskjsds'),
+(8, 'Roman', 'rlg00@gmail.com', 'kejskdfj', 'sakdjldskfljsdfkds');
 
 -- --------------------------------------------------------
 
@@ -240,13 +257,13 @@ ALTER TABLE `args_seguros`
 -- AUTO_INCREMENT de la tabla `args_clientes`
 --
 ALTER TABLE `args_clientes`
-  MODIFY `IdCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IdCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `args_contactos`
 --
 ALTER TABLE `args_contactos`
-  MODIFY `IdContacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IdContacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `args_seguros`
