@@ -1,14 +1,13 @@
 ﻿using API_PIA_BUENO.API_PROG.data.Repositorios;
 using API_PIA_BUENO.API_PROG.model;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 namespace API_PIA_BUENO.Controllers
 {
     [Route("api/[controller]")]
@@ -41,7 +40,7 @@ namespace API_PIA_BUENO.Controllers
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = claims,
-                    Expires = DateTime.UtcNow.AddMinutes(15),
+                    Expires = DateTime.UtcNow.AddMinutes(2),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(keyBytes), SecurityAlgorithms.HmacSha256Signature),
 
                 };
@@ -50,8 +49,8 @@ namespace API_PIA_BUENO.Controllers
                 var tokenConfig = tokenHandler.CreateToken(tokenDescriptor);
 
                 string createdToken = tokenHandler.WriteToken(tokenConfig);
-
                 return StatusCode(StatusCodes.Status200OK, new { access_token = createdToken });
+
             }
             else
             {

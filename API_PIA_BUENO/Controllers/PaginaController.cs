@@ -8,6 +8,9 @@ using API_PROG.model;
 using Microsoft.AspNetCore.Authorization;
 using API_PIA_BUENO.API_PROG.model;
 using API_PIA_BUENO.API_PROG.data.Repositorios;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 namespace API_PIA_BUENO.Controllers
 {
@@ -31,7 +34,29 @@ namespace API_PIA_BUENO.Controllers
                 return BadRequest(ModelState);
 
             var created = await _PaginaRepository.ContactoInsertarPagina(clientes);
-            return Created("created", created);
+            try
+            {
+                var accountSid = "ACcaa3498f42a49bd9a4399398bf62f31d";
+                var authToken = "554a0208b72aa1d9c09e1e85b8fea010";
+                TwilioClient.Init(accountSid, authToken);
+
+                var messageOptions = new CreateMessageOptions(
+                  new PhoneNumber("whatsapp:+5218120741152"));
+                messageOptions.From = new PhoneNumber("whatsapp:+14155238886");
+                messageOptions.Body = "¡Tienes un nuevo buzon de duda! " + clientes.Nombre+"." + 
+                    " Su duda: " + clientes.Mensaje;
+
+
+
+                var message = MessageResource.Create(messageOptions);
+                return Created("created", created);
+            }
+            catch
+            {
+                return Created("created", created);
+            }
+
+
         }
 
         [HttpPost]
@@ -44,7 +69,28 @@ namespace API_PIA_BUENO.Controllers
                 return BadRequest(ModelState);
 
             var created = await _PaginaRepository.InsertClientes(clientes);
-            return Created("created", created);
+
+
+            try
+            {
+                var accountSid = "ACcaa3498f42a49bd9a4399398bf62f31d";
+                var authToken = "554a0208b72aa1d9c09e1e85b8fea010";
+                TwilioClient.Init(accountSid, authToken);
+
+                var messageOptions = new CreateMessageOptions(
+                  new PhoneNumber("whatsapp:+5218120741152"));
+                messageOptions.From = new PhoneNumber("whatsapp:+14155238886");
+                messageOptions.Body = "¡Solicito asesoría un cliente nuevo!: " + clientes.CL_NOMBRES;
+
+
+                var message = MessageResource.Create(messageOptions);
+                return Created("created", created);
+            }
+            catch
+            {
+                return Created("created", created);
+            }
+
         }
     }
 }

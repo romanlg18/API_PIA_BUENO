@@ -7,13 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using API_PIA_BUENO.API_PROG.model;
-using API_PROG.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using API_PIA_BUENO.API_PROG.data.Repositorios;
+using System;
+using System.Collections.Generic;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
+
 
 namespace API_PROG.data.Repositorios
 {
@@ -46,7 +50,8 @@ namespace API_PROG.data.Repositorios
             var result = await db.ExecuteAsync(sql, new { NombresP = clientes.CL_NOMBRES, ApellidosP = clientes.CL_aPELLIDOS, NumeroP = clientes.CL_NUMERO, CorreoP = clientes.CL_CORREO, IdSegurosP = clientes.IDSEGUROS, FECHAP = clientes.FECHA_ALTA });
             return result > 0;
         }
-
-
     }
 }
+
+
+
